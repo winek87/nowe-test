@@ -1,0 +1,68 @@
+general:
+    log_level_file: DEBUG
+    log_level_console: DEBUG
+    console_logging_enabled: false
+    clear_log_on_start: true
+    recursive_scan: true
+    active_profile_id: null
+paths:
+    main_config_file: config/config.yaml
+    profiles_file: profiles/default.json
+    repair_profiles_file: profiles/repair_profiles.json
+    job_state_dir: .app_data/job_state
+    default_output_directory: output/processed_videos
+    default_repaired_directory: output/repaired_videos
+    log_file: logs/app.log
+    last_used_source_directory: /media/Dysk/test-vid
+    last_used_single_file_path: null
+ffmpeg:
+    ffmpeg_path: /usr/bin/ffmpeg
+    ffprobe_path: /usr/bin/ffprobe
+    mkvmerge_path: mkvmerge
+    enable_dynamic_timeout: false
+    dynamic_timeout_multiplier: 2.0
+    dynamic_timeout_buffer_seconds: 300
+    dynamic_timeout_min_seconds: 600
+    fixed_timeout_seconds: 0
+processing:
+    error_handling: skip
+    output_file_exists: rename
+    rename_pattern: '{original_stem}_{profile_name}_{timestamp}'
+    repair_rename_pattern: '{original_stem}_repaired_{timestamp}'
+    delete_original_on_success: false
+    supported_file_extensions:
+    - .mp4
+    - .mkv
+    - .avi
+    - .mov
+    - .webm
+    - .flv
+    - .wmv
+    - .mpg
+    - .mpeg
+    - .ts
+    - .vob
+    - .mts
+    - .m2ts
+    verify_repaired_files: true
+    auto_repair_on_suspicion: true
+    repair_timeout_seconds: 300
+    repair_options:
+        attempt_sequentially: true
+        use_custom_ffmpeg_repair_profiles: true
+        enabled_ffmpeg_profile_ids:
+        - d7f2c7a0-74f8-4f80-8a19-16a9ff7de4d5
+        - 8add2741-80f2-4ed8-b22e-af17035491c7
+        builtin_strategies_config:
+            mkvmerge_remux:
+                enabled: true
+                name: MKVToolNix (Remuks MKV)
+                description: Remuksowanie pliku MKV za pomocą mkvmerge (tylko dla
+                    .mkv).
+ui:
+    datetime_format: '%Y-%m-%d %H:%M:%S'
+    progress_bar_width: 40
+    rich_monitor_refresh_rate: 2.0
+    rich_monitor_disk_refresh_interval: 5.0
+    legacy_monitor_refresh_interval: 2.0
+    delay_between_files_seconds: 1.0

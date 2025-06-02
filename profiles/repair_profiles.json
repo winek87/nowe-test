@@ -1,0 +1,42 @@
+[
+    {
+        "id": "d7f2c7a0-74f8-4f80-8a19-16a9ff7de4d5",
+        "name": "FFmpeg - Kopia Strumieni (domy\u015blny)",
+        "description": "Standardowa, szybka pr\u00f3ba naprawy przez skopiowanie wszystkich strumieni, metadanych i rozdzia\u0142\u00f3w.",
+        "ffmpeg_params": [
+            "-c",
+            "copy",
+            "-map",
+            "0",
+            "-ignore_unknown",
+            "-fflags",
+            "+genpts",
+            "-map_metadata",
+            "0",
+            "-map_chapters",
+            "0"
+        ],
+        "applies_to_mkv_only": false,
+        "copy_tags": true
+    },
+    {
+        "id": "8add2741-80f2-4ed8-b22e-af17035491c7",
+        "name": "FFmpeg - Ignoruj B\u0142\u0119dy Dekodowania",
+        "description": "Pr\u00f3buje skopiowa\u0107 strumienie, ignoruj\u0105c b\u0142\u0119dy dekodowania. Kopiuje metadane i rozdzia\u0142y.",
+        "ffmpeg_params": [
+            "-err_detect",
+            "ignore_err",
+            "-c",
+            "copy",
+            "-map",
+            "0",
+            "-ignore_unknown",
+            "-map_metadata",
+            "0",
+            "-map_chapters",
+            "0"
+        ],
+        "applies_to_mkv_only": false,
+        "copy_tags": true
+    }
+]

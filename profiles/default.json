@@ -1,0 +1,170 @@
+[
+    {
+        "id": "99c6ecf8-3993-4f6d-8097-d634d5794394",
+        "name": "Domy\u015blny H.264 AAC",
+        "description": "Standardowy profil H.264 z d\u017awi\u0119kiem AAC, dobra kompatybilno\u015b\u0107.",
+        "ffmpeg_params": [
+            "-c:v",
+            "libx264",
+            "-preset",
+            "medium",
+            "-crf",
+            "23",
+            "-c:a",
+            "aac",
+            "-b:a",
+            "128k",
+            "-movflags",
+            "+faststart"
+        ],
+        "output_extension": "mp4",
+        "output_settings": {
+            "subdirectory": "default_h264"
+        }
+    },
+    {
+        "id": "3c043113-a29d-47cb-9674-45b799be4b6e",
+        "name": "MKV VP9 (Otwarty Format)",
+        "description": "Kontener Matroska (MKV) z wideo VP9 (dobry dla wysokiej jako\u015bci) i audio Opus 128kbps. Automatycznie dobiera w\u0105tki kodowania. Zachowuje metadane.",
+        "ffmpeg_params": [
+            "-c:v",
+            "libvpx-vp9",
+            "-crf",
+            "30",
+            "-b:v",
+            "0",
+            "-threads",
+            "auto",
+            "-c:a",
+            "libopus",
+            "-b:a",
+            "128k",
+            "-map_metadata",
+            "0",
+            "-map_chapters",
+            "0"
+        ],
+        "output_extension": "mkv",
+        "output_settings": {
+            "subdirectory": "h264_files_mkv"
+        }
+    },
+    {
+        "id": "0f80d3ab-6454-4e01-92e2-a0bd52a6fc3c",
+        "name": "MP4 H.264 (Pe\u0142ne Mapowanie)",
+        "description": "Transkodowanie wideo do H.264 (CRF 23, preset medium) i audio do AAC (128kbps). Wa\u017cne: profil zachowuje WSZYSTKIE strumienie (audio, napisy, dane) z pliku \u017ar\u00f3d\u0142owego, kopiuj\u0105c je bez re-enkodowania. Zachowuje metadane.",
+        "ffmpeg_params": [
+            "-map",
+            "0",
+            "-c:v",
+            "libx264",
+            "-crf",
+            "23",
+            "-preset",
+            "medium",
+            "-c:a",
+            "aac",
+            "-b:a",
+            "128k",
+            "-c:s",
+            "copy",
+            "-map_chapters",
+            "0",
+            "-map_metadata",
+            "0"
+        ],
+        "output_extension": "mp4",
+        "output_settings": {
+            "subdirectory": "h264_files_mp4"
+        }
+    },
+    {
+        "id": "d38d4b13-9961-4cb9-94ab-7c62f4303e80",
+        "name": "MP4 H.264 (Szybki)",
+        "description": "Standardowy MP4 u\u017cywaj\u0105cy H.264 z szybkim presetem, dobr\u0105 kompresj\u0105 i kompatybilno\u015bci\u0105. Audio AAC 128kbps. Zachowuje metadane.",
+        "ffmpeg_params": [
+            "-c:v",
+            "libx264",
+            "-crf",
+            "23",
+            "-preset",
+            "fast",
+            "-c:a",
+            "aac",
+            "-b:a",
+            "128k",
+            "-map_metadata",
+            "0",
+            "-map_chapters",
+            "0"
+        ],
+        "output_extension": "mp4",
+        "output_settings": {
+            "subdirectory": "h264_files_mp4"
+        }
+    },
+    {
+        "id": "5a0d6911-a3a2-47a6-aef9-f532a23f1c63",
+        "name": "MP4 H.265 (Wydajny)",
+        "description": "MP4 u\u017cywaj\u0105cy kodeka H.265 (HEVC), oferuj\u0105cy lepsz\u0105 kompresj\u0119 ni\u017c H.264. Preset 'medium'. Audio AAC 128kbps. Zachowuje metadane. Dodaje tag 'hvc1' dla lepszej kompatybilno\u015bci z",
+        "ffmpeg_params": [
+            "iOS/macOS.-c:v",
+            "libx265",
+            "-crf",
+            "28",
+            "-preset",
+            "medium",
+            "-c:a",
+            "aac",
+            "-b:a",
+            "128k",
+            "-tag:v",
+            "hvc1",
+            "-map_metadata",
+            "0",
+            "-map_chapters",
+            "0"
+        ],
+        "output_extension": "mp4",
+        "output_settings": {
+            "subdirectory": "h264_files_mp4"
+        }
+    },
+    {
+        "id": "6bf85125-1b91-47e3-a531-4db7ba24242e",
+        "name": "MP4/MOV - Fix MOOV Atom (Remux)",
+        "description": "Remuxuje pliki MP4/MOV, przenosz\u0105c 'moov atom' na pocz\u0105tek pliku ('faststart'). Poprawia odtwarzanie strumieniowe i szybko\u015b\u0107 \u0142adowania w sieci. Kopiuje wszystkie strumienie bez re-enkodowania.",
+        "ffmpeg_params": [
+            "-c",
+            "copy",
+            "-movflags",
+            "+faststart",
+            "-map",
+            "0"
+        ],
+        "output_extension": "mp4",
+        "output_settings": {
+            "subdirectory": "h264_files_mp4"
+        }
+    },
+    {
+        "id": "0e7a1f8e-c7dd-49b5-8dfc-a9c86a194eae",
+        "name": "test",
+        "description": "testuje",
+        "ffmpeg_params": [
+            "-map_metadata",
+            "0",
+            "-pix_fmt",
+            "yuv422p",
+            "-c:v",
+            "libx264",
+            "-crf",
+            "23",
+            "-preset",
+            "medium",
+            "-metadata"
+        ],
+        "output_extension": "mp4",
+        "output_settings": {}
+    }
+]
